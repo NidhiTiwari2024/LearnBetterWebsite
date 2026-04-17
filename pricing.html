@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — LearnBetter</title>
+  <meta name="description" content="Simple, transparent pricing for individuals and teams. Start free, upgrade when ready.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-outer">
+    <div class="nav-pill">
+      <a href="/" class="nav-logo-wrap">
+        <img
+          src="https://storage.googleapis.com/learn-better-media/images/blog/Logo.jpg"
+          alt="LearnBetter"
+          class="nav-logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nav-logo-text">LearnBetter</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="pricing.html" class="active">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#login">Log In</a></li>
+        </ul>
+        <a href="#" class="nav-cta">
+          Get Started Free
+          <span class="nav-cta-circle">
+            <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#login">Log In</a>
+      <hr>
+      <a href="#" class="nav-cta">
+        Get Started Free
+        <span class="nav-cta-circle">
+          <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     PAGE HERO
+════════════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="label">Simple, Transparent Pricing</div>
+  <h1>Invest in your learning</h1>
+  <p>Start free. Upgrade when you're ready. Cancel anytime — no questions asked.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRICING CARDS
+════════════════════════════════════════════ -->
+<section class="pricing-section">
+  <div class="container">
+
+    <!-- Billing toggle -->
+    <div class="billing-toggle">
+      <span>Monthly</span>
+      <label class="toggle-wrap">
+        <input type="checkbox" id="pricingToggle">
+        <span class="toggle-track"></span>
+      </label>
+      <span>Annual &nbsp;<span class="label" style="margin-bottom:0;vertical-align:middle;">Save 25%</span></span>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Free -->
+      <div class="p-card fade-up">
+        <div class="p-tier">Free</div>
+        <div class="p-price">
+          <span class="p-currency">$</span>
+          <span class="p-amount" data-plan="free">0</span>
+        </div>
+        <span class="p-period">/month</span>
+        <p class="p-desc">Perfect for getting started and building smarter study habits.</p>
+        <ul class="p-features">
+          <li>Up to 50 concepts</li>
+          <li>Basic spaced repetition</li>
+          <li>1 active learning goal</li>
+          <li>7-day review history</li>
+          <li>Community access</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Start for free</a>
+      </div>
+
+      <!-- Pro — featured -->
+      <div class="p-card p-featured fade-up" style="transition-delay:.08s">
+        <div class="p-tier">Pro</div>
+        <div class="p-badge">Most Popular</div>
+        <div class="p-price">
+          <span class="p-currency">$</span>
+          <span class="p-amount" data-plan="pro">12</span>
+        </div>
+        <span class="p-period">/month</span>
+        <p class="p-desc">For serious learners who want to unlock their full potential.</p>
+        <ul class="p-features">
+          <li>Unlimited concepts</li>
+          <li>Advanced adaptive algorithm</li>
+          <li>Unlimited learning goals</li>
+          <li>Full history &amp; analytics</li>
+          <li>AI concept suggestions</li>
+          <li>Import from any source</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Get Pro</a>
+      </div>
+
+      <!-- Team -->
+      <div class="p-card fade-up" style="transition-delay:.16s">
+        <div class="p-tier">Team</div>
+        <div class="p-price">
+          <span class="p-currency">$</span>
+          <span class="p-amount" data-plan="team">29</span>
+        </div>
+        <span class="p-period">/month per seat</span>
+        <p class="p-desc">For organisations that learn together and grow together.</p>
+        <ul class="p-features">
+          <li>Everything in Pro</li>
+          <li>Team dashboards</li>
+          <li>Shared concept libraries</li>
+          <li>Admin &amp; permissions controls</li>
+          <li>SSO / SAML</li>
+          <li>Dedicated success manager</li>
+          <li>SLA guarantees</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Contact Sales</a>
+      </div>
+
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar fade-up" style="margin-top:56px;text-align:center;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;transition-delay:.24s">
+      <span class="trust-item">🔒 SOC 2 Type II</span>
+      <span class="trust-item">🎓 50% student discount</span>
+      <span class="trust-item">💳 No credit card to start</span>
+      <span class="trust-item">↩️ Cancel anytime</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     COMPARE TABLE
+════════════════════════════════════════════ -->
+<section style="padding:80px 0;background:var(--white);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Compare plans</h2>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="compare-table fade-up" style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:14px 18px;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border);">Feature</th>
+            <th style="padding:14px 18px;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border);">Free</th>
+            <th style="padding:14px 18px;color:var(--accent);font-weight:700;border-bottom:2px solid var(--accent);background:rgba(52,87,165,.04);">Pro</th>
+            <th style="padding:14px 18px;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border);">Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row">
+            <td>Concepts</td><td>50</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Unlimited</td><td>Unlimited</td>
+          </tr>
+          <tr class="table-row table-alt">
+            <td>Learning goals</td><td>1</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Unlimited</td><td>Unlimited</td>
+          </tr>
+          <tr class="table-row">
+            <td>Spaced repetition</td><td>Basic</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Adaptive AI</td><td>Adaptive AI</td>
+          </tr>
+          <tr class="table-row table-alt">
+            <td>Analytics</td><td>7 days</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Full history</td><td>Full + team view</td>
+          </tr>
+          <tr class="table-row">
+            <td>Import sources</td><td>—</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Any source</td><td>Any source</td>
+          </tr>
+          <tr class="table-row table-alt">
+            <td>AI concept suggestions</td><td>—</td><td style="background:rgba(52,87,165,.03);">✓</td><td>✓</td>
+          </tr>
+          <tr class="table-row">
+            <td>Shared libraries</td><td>—</td><td style="background:rgba(52,87,165,.03);">—</td><td>✓</td>
+          </tr>
+          <tr class="table-row table-alt">
+            <td>SSO / SAML</td><td>—</td><td style="background:rgba(52,87,165,.03);">—</td><td>✓</td>
+          </tr>
+          <tr class="table-row">
+            <td>Support</td><td>Community</td><td style="background:rgba(52,87,165,.03);font-weight:600;color:var(--text);">Priority email</td><td>Dedicated manager</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card fade-up">
+        <h3>Can I switch plans anytime?</h3>
+        <p>Yes. Upgrade, downgrade, or cancel at any time. Your billing adjusts immediately, pro-rated to the day.</p>
+      </div>
+      <div class="faq-card fade-up" style="transition-delay:.06s">
+        <h3>Is there a student discount?</h3>
+        <p>Yes — students get 50% off Pro with a verified .edu email address. Just sign up and we'll apply it automatically.</p>
+      </div>
+      <div class="faq-card fade-up" style="transition-delay:.12s">
+        <h3>What payment methods do you accept?</h3>
+        <p>All major credit cards (Visa, Mastercard, Amex), PayPal, and bank transfer for annual enterprise plans.</p>
+      </div>
+      <div class="faq-card fade-up" style="transition-delay:.18s">
+        <h3>Is my data safe?</h3>
+        <p>Your data is encrypted at rest and in transit. We are SOC 2 Type II compliant and never sell your personal data.</p>
+      </div>
+      <div class="faq-card fade-up" style="transition-delay:.24s">
+        <h3>How does the free plan work?</h3>
+        <p>The free plan is genuinely free — no trial period, no credit card required. Use it as long as you like. Upgrade only when you hit the limits.</p>
+      </div>
+      <div class="faq-card fade-up" style="transition-delay:.30s">
+        <h3>What happens to my data if I cancel?</h3>
+        <p>Your concepts and progress are yours. We give you 90 days to export your full data in standard formats after cancellation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA STRIP
+════════════════════════════════════════════ -->
+<section class="cta-strip">
+  <div class="container">
+    <h2>Start learning smarter today</h2>
+    <p>Join 4 200+ learners. Free forever — no credit card needed.</p>
+    <a href="#" class="btn btn-primary btn-lg">Create your free account</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">LearnBetter</a>
+        <p>Helping people learn more effectively through science-backed methods and smart technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LearnBetter, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+<style>
+  .trust-item {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .compare-table td, .compare-table th {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+  }
+  .compare-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .table-alt td { background: var(--card-bg); }
+  .table-alt td:nth-child(3) { background: rgba(52,87,165,.05) !important; }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .faq-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+</body>
+</html>

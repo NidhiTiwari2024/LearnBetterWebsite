@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnBetter — Master Ideas Faster</title>
+  <meta name="description" content="Transform how you study with AI-powered concept mapping and spaced repetition.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-outer">
+    <div class="nav-pill">
+      <!-- Logo -->
+      <a href="/" class="nav-logo-wrap">
+        <img
+          src="https://storage.googleapis.com/learn-better-media/images/blog/Logo.jpg"
+          alt="LearnBetter"
+          class="nav-logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nav-logo-text">LearnBetter</span>
+      </a>
+
+      <!-- Right side -->
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#login">Log In</a></li>
+        </ul>
+        <a href="pricing.html" class="nav-cta">
+          Get Started Free
+          <span class="nav-cta-circle">
+            <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <!-- Mobile hamburger -->
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div class="nav-mobile" id="navMobile">
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#login">Log In</a>
+      <hr>
+      <a href="pricing.html" class="nav-cta">
+        Get Started Free
+        <span class="nav-cta-circle">
+          <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO — Scroll-Controlled Video
+════════════════════════════════════════════ -->
+<section class="sv-root">
+  <div class="sv-wrapper" id="svContainer">
+
+    <!-- Video -->
+    <video
+      id="svVideo"
+      class="sv-video"
+      muted
+      playsinline
+      preload="auto"
+      src="https://storage.googleapis.com/learn_better_home/%234%20-Video%20Creation%20Without%20Specific%20Effects%20Waifu2x%202X%20Mp4.mp4">
+    </video>
+
+    <!-- Darkening / blur overlay -->
+    <div class="sv-overlay" id="svOverlay"></div>
+
+    <!-- Centred text -->
+    <div class="sv-text-wrap">
+      <div class="sv-text-inner" id="svTextInner">
+        <h1 class="sv-title" id="svTitle">Own What You Learn. Forever.</h1>
+        <p  class="sv-subtitle" id="svSubtitle">LearnBetter is the only platform that automates your learning by capturing and locking in the best ideas from everything you watch and read.</p>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="sv-hint" id="svHint">
+      <div class="sv-hint-inner">
+        <span class="sv-hint-text">Scroll to Play</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RETENTION SYSTEM
+════════════════════════════════════════════ -->
+<section class="rs-section" id="features">
+  <div class="rs-inner">
+
+    <!-- Header -->
+    <div class="rs-header fade-up">
+      <h2 class="rs-heading">Retention, engineered.</h2>
+      <p class="rs-subheading">You don't just memorize; you engineer knowledge. We manage the entire biological lifecycle of a thought—from the moment you encounter it to the moment you master it.</p>
+    </div>
+
+    <!-- 2×2 Card Grid -->
+    <div class="rs-grid">
+
+      <div class="rs-card fade-up">
+        <div class="rs-label-row">
+          <span class="rs-label">Encoding</span>
+          <span class="rs-sublabel">— The Input</span>
+        </div>
+        <h3 class="rs-card-headline">Breakdown &amp; Connect</h3>
+        <p class="rs-card-body">Don't just read words. We help you deconstruct complex articles into clear, single concepts—turning raw information into structured notes your brain can actually use.</p>
+      </div>
+
+      <div class="rs-card fade-up">
+        <div class="rs-label-row">
+          <span class="rs-label">Consolidation</span>
+          <span class="rs-sublabel">— The Schedule</span>
+        </div>
+        <h3 class="rs-card-headline">Spaced Repetition</h3>
+        <p class="rs-card-body">Memories stabilize while you rest. Our algorithm calculates the perfect gap between reviews, ensuring you revisit a concept exactly when it's ready to be hardened into long-term memory.</p>
+      </div>
+
+      <div class="rs-card fade-up">
+        <div class="rs-label-row">
+          <span class="rs-label">Retrieval</span>
+          <span class="rs-sublabel">— The Workout</span>
+        </div>
+        <h3 class="rs-card-headline">Active Recall</h3>
+        <p class="rs-card-body">Re-reading creates the illusion of knowing. We use 50+ question formats to force you to pull the answer from your mind, which is the only way to arrest forgetting.</p>
+      </div>
+
+      <div class="rs-card fade-up">
+        <div class="rs-label-row">
+          <span class="rs-label">Retention</span>
+          <span class="rs-sublabel">— The Result</span>
+        </div>
+        <h3 class="rs-card-headline">Visual Progress</h3>
+        <p class="rs-card-body">See what sticks. Your Learning Garden visualizes your actual retention in real-time, showing you exactly which concepts are mastered and which ones are fading.</p>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="rs-cta fade-up">
+      <a href="pricing.html" class="ada-btn">
+        <span>Start Learning Now</span>
+        <span class="ada-btn-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FORGETTING CURVE / TIME SAVER
+════════════════════════════════════════════ -->
+<section class="fc-section">
+  <div class="container">
+    <div class="fc-grid">
+
+      <!-- Left: text pillar -->
+      <div class="fc-content fade-up">
+        <h2 class="pillar-h2">The Time Saver</h2>
+        <h4 class="fc-subhead">Never re-read a chapter again.</h4>
+        <p class="pillar-description">Passive reading is a leaky bucket — you naturally forget most of what you consume within days. Spaced repetition stops this decay. Instead of wasting hours re-reading entire articles to "refresh," the algorithm intercepts specific concepts exactly when they fade.</p>
+        <a href="pricing.html" class="ada-btn" style="margin-top:36px;">
+          <span>Start Your Learning Journey</span>
+          <span class="ada-btn-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Right: forgetting curve chart -->
+      <div class="fc-chart-wrap fade-up" style="transition-delay:.12s">
+        <div class="fc-chart-container" id="fcChart"></div>
+        <div class="fc-legend">
+          <div class="fc-legend-item">
+            <span class="fc-legend-dot" style="background:#9E9E9E;"></span>
+            <span>Standard Memory</span>
+          </div>
+          <div class="fc-legend-item">
+            <span class="fc-legend-dot" style="background:#3457A5;box-shadow:0 0 8px #3457A560;"></span>
+            <span style="font-weight:700;color:var(--text);">LearnBetter</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOCUS ON WHAT MATTERS — CONCEPT TO QUESTION
+════════════════════════════════════════════ -->
+<section class="ctq-section" id="concepts">
+  <div class="ctq-inner">
+
+    <div class="section-header fade-up">
+      <h2>Master the Ideas That Move You Forward</h2>
+      <p>Focus your energy on high-value insights. LearnBetter turns your best takeaways into active questions to build permanent knowledge.</p>
+    </div>
+
+    <div class="ctq-layout" id="ctqContainer">
+
+      <!-- Left card: source text -->
+      <div class="ctq-card" id="ctqLeft">
+        <div class="ctq-card-label">
+          <span class="ctq-num">1</span>
+          <span class="ctq-label-text">Source Text</span>
+        </div>
+        <div class="ctq-text-area" id="ctqTextArea">
+          <!-- rendered by JS -->
+        </div>
+        <div class="ctq-scan-line" id="ctqScanLine"></div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="ctq-arrow-wrap">
+        <svg class="ctq-arrow-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3457A5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+
+      <!-- Right card: concept filtering -->
+      <div class="ctq-card" id="ctqRight">
+        <div class="ctq-card-label">
+          <span class="ctq-num">2</span>
+          <span class="ctq-label-text">Concept Filtering</span>
+        </div>
+
+        <div class="ctq-accepted-wrap" id="ctqAcceptedWrap"></div>
+
+        <div class="ctq-divider" id="ctqDivider">
+          <div class="ctq-divider-line"></div>
+          <span class="ctq-divider-text">Irrelevant concepts filtered out</span>
+          <div class="ctq-divider-line"></div>
+        </div>
+
+        <div class="ctq-rejected-list" id="ctqRejectedList"></div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="ctq-cta fade-up">
+      <a href="pricing.html" class="ada-btn">
+        <span>Learn more</span>
+        <span class="ada-btn-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     BLOOM'S TAXONOMY DEPTH SLIDER
+════════════════════════════════════════════ -->
+<section class="blooms-section">
+  <div class="blooms-inner">
+    <div class="blooms-grid">
+
+      <!-- Left column -->
+      <div class="blooms-left fade-up">
+        <h2 class="blooms-heading">Align Practice with Purpose</h2>
+        <p class="blooms-subheading">Set your goal and watch the questions follow. LearnBetter instantly turns any video or article into a personalized path of 40+ matching, sorting, and ranking drills. Every session starts with foundational facts and scales up to match your intent — stopping exactly at the thinking level you want to reach.</p>
+        <a href="pricing.html" class="ada-btn" style="margin-top:32px;display:inline-flex;">
+          <span>Start Learning</span>
+          <span class="ada-btn-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Right column: card + slider -->
+      <div class="blooms-right fade-up" style="transition-delay:.1s">
+
+        <!-- Main card -->
+        <div class="blooms-card" id="bloomsCard">
+
+          <!-- Top: level + context -->
+          <div class="blooms-card-top">
+            <div class="blooms-card-header">
+              <span class="blooms-level-name" id="bloomsLevelName"></span>
+              <span class="blooms-level-badge" id="bloomsLevelBadge">Level 1/6</span>
+            </div>
+            <div class="blooms-context-wrap" id="bloomsContextWrap">
+              <h3 class="blooms-context-heading" id="bloomsContextHeading"></h3>
+              <p class="blooms-context-desc" id="bloomsContextDesc"></p>
+            </div>
+          </div>
+
+          <!-- Middle: challenge + visualizer -->
+          <div class="blooms-card-middle">
+            <div class="blooms-challenge-inner active" id="bloomsChallenge">
+              <div>
+                <span class="blooms-challenge-type" id="bloomsChallengeType"></span>
+                <p class="blooms-challenge-text" id="bloomsChallengeText"></p>
+              </div>
+              <div class="blooms-visualizer" id="bloomsVisualizer"></div>
+            </div>
+          </div>
+
+        </div><!-- /.blooms-card -->
+
+        <!-- Slider control -->
+        <div class="blooms-slider-wrap">
+          <div class="blooms-track-wrap">
+            <div class="blooms-track-bg"></div>
+            <div class="blooms-track-fill" id="bloomsTrackFill" style="width:0%"></div>
+            <div class="blooms-thumb" id="bloomsThumb" style="left:0%">
+              <div class="blooms-thumb-dot"></div>
+            </div>
+            <input type="range" class="blooms-input" id="bloomsInput"
+              min="0" max="5" step="0.01" value="0">
+          </div>
+          <div class="blooms-labels" id="bloomsLabels"></div>
+        </div>
+
+      </div><!-- /.blooms-right -->
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     THREE STEPS TO MASTERY
+════════════════════════════════════════════ -->
+<section class="steps-section">
+  <div class="container">
+    <div class="section-header fade-up" style="max-width:none;">
+      <h2>Three steps to total mastery.</h2>
+    </div>
+    <div class="steps-grid">
+
+      <div class="step-card" style="transition-delay:.05s">
+        <div class="step-circle">1</div>
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=800&h=560&fit=crop&auto=format"
+            alt="Step 1 — Highlight the Signal"
+            loading="lazy">
+        </div>
+        <h3>Highlight the "Signal"</h3>
+        <p>Import any article and highlight only the specific ideas you want to keep. We'll filter out the noise so you can focus on the signal.</p>
+      </div>
+
+      <div class="step-card" style="transition-delay:.15s">
+        <div class="step-circle">2</div>
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=560&fit=crop&auto=format"
+            alt="Step 2 — Take the Challenge"
+            loading="lazy">
+        </div>
+        <h3>Take the Challenge:</h3>
+        <p>Instead of just reading, your brain gets a workout. Solve unique challenges that force you to actually use the information you've captured.</p>
+      </div>
+
+      <div class="step-card" style="transition-delay:.25s">
+        <div class="step-circle">3</div>
+        <div class="step-img">
+          <img
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=560&fit=crop&auto=format"
+            alt="Step 3 — Own the Knowledge"
+            loading="lazy">
+        </div>
+        <h3>Own the Knowledge:</h3>
+        <p>Our system tells you exactly when to review. As you master concepts, watch your Learning Garden grow and thrive in real-time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Loved by learners everywhere</h2>
+      <p>Join thousands of students, professionals, and lifelong learners who've transformed how they study.</p>
+    </div>
+    <div class="testi-carousel fade-up">
+      <!-- Cards injected by JS -->
+      <div class="testi-stack"></div>
+      <div class="testi-controls">
+        <button class="testi-btn testi-prev" aria-label="Previous testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="testi-dots"></div>
+        <button class="testi-btn testi-next" aria-label="Next testimonial">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA STRIP
+════════════════════════════════════════════ -->
+<section class="cta-strip">
+  <div class="container">
+    <h2>Ready to learn better?</h2>
+    <p>Start your free account today. No credit card required.</p>
+    <a href="pricing.html" class="btn btn-primary btn-lg">Get started for free</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">LearnBetter</a>
+        <p>Helping people learn more effectively through science-backed methods and smart technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LearnBetter, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=13"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — LearnBetter</title>
+  <meta name="description" content="Insights on learning science, productivity, and mastering ideas faster.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Blog-page specific ───────────────────────── */
+    .blog-page {
+      min-height: 100vh;
+      background: #F9FAFB;
+      padding-top: 96px;
+    }
+
+    .blog-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 64px 28px 120px;
+    }
+
+    /* Banner */
+    .blog-banner {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 56px;
+      line-height: 0;
+      max-height: 300px;
+    }
+    .blog-banner img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+    }
+
+    /* Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    /* Card */
+    .blog-card {
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: box-shadow .3s ease, transform .3s ease;
+      opacity: 0;
+      transform: translateY(24px);
+      position: relative;
+      cursor: pointer;
+    }
+    .blog-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .blog-card:hover {
+      box-shadow: 0 8px 32px rgba(52,87,165,0.14);
+      transform: translateY(-4px);
+    }
+    /* Stretched link — makes entire card clickable */
+    .blog-card-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 14px;
+    }
+
+    /* Card image */
+    .blog-card-img {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+    .blog-card:hover .blog-card-img img {
+      transform: scale(1.05);
+    }
+
+    /* Card body */
+    .blog-card-body {
+      padding: 22px 24px 26px;
+    }
+    .blog-card-body span {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+      line-height: 1.45;
+      display: block;
+      transition: color .2s;
+    }
+    .blog-card:hover .blog-card-body span {
+      color: var(--accent);
+    }
+
+    /* Active nav link */
+    .nav-active { color: var(--accent) !important; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-inner { padding: 40px 18px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-outer">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-logo-wrap">
+        <img
+          src="https://storage.googleapis.com/learn-better-media/images/blog/Logo.jpg"
+          alt="LearnBetter"
+          class="nav-logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nav-logo-text">LearnBetter</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="blog.html" class="nav-active">Blog</a></li>
+          <li><a href="#login">Log In</a></li>
+        </ul>
+        <a href="pricing.html" class="nav-cta">
+          Get Started Free
+          <span class="nav-cta-circle">
+            <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#login">Log In</a>
+      <hr>
+      <a href="pricing.html" class="nav-cta">
+        Get Started Free
+        <span class="nav-cta-circle">
+          <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     BLOG CONTENT
+════════════════════════════════════════════ -->
+<main class="blog-page">
+  <div class="blog-inner">
+
+    <!-- Banner -->
+    <div class="blog-banner">
+      <img
+        src="https://storage.googleapis.com/learn-better-media/images/blog/Blog_Banner.png"
+        alt="LearnBetter Blog"
+        loading="eager"
+        onerror="this.parentElement.style.display='none'">
+    </div>
+
+    <!-- Post grid -->
+    <div class="blog-grid">
+
+      <div class="blog-card">
+        <a href="what-is-learn-better.html" class="blog-card-link" aria-label="What Is LearnBetter?"></a>
+        <div class="blog-card-img">
+          <img src="https://storage.googleapis.com/learn-better-media/images/blog/WhatisLearnBetter.png" alt="What Is LearnBetter?" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>What Is LearnBetter?</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <a href="#article-2" class="blog-card-link" aria-label="Creating a Productive Workspace for Remote Work"></a>
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1693159682618-074078ed271e?w=800&h=450&fit=crop&auto=format" alt="Productive workspace" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>Creating a Productive Workspace for Remote Work</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <a href="#article-3" class="blog-card-link" aria-label="Best Practices for Clean Code in 2026"></a>
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800&h=450&fit=crop&auto=format" alt="Clean code" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>Best Practices for Clean Code in 2026</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <a href="#article-4" class="blog-card-link" aria-label="The Future of Design Systems"></a>
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?w=800&h=450&fit=crop&auto=format" alt="Design systems" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>The Future of Design Systems</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <a href="#article-5" class="blog-card-link" aria-label="Morning Routines for Creative Professionals"></a>
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/flagged/photo-1572455039929-2760c4f1ab1d?w=800&h=450&fit=crop&auto=format" alt="Morning routines" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>Morning Routines for Creative Professionals</span>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <a href="#article-6" class="blog-card-link" aria-label="Minimalism in Modern Office Design"></a>
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1634803828978-24dabef75a5e?w=800&h=450&fit=crop&auto=format" alt="Minimalist office" loading="lazy">
+        </div>
+        <div class="blog-card-body">
+          <span>Minimalism in Modern Office Design</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">LearnBetter</a>
+        <p>Helping people learn more effectively through science-backed methods and smart technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LearnBetter, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('navHamburger');
+  const navMobile = document.getElementById('navMobile');
+  if (hamburger && navMobile) {
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-outer')) navMobile.classList.remove('open');
+    });
+  }
+
+  // Scroll-reveal cards with stagger
+  const cardObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 90);
+        cardObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.blog-card').forEach(c => cardObs.observe(c));
+</script>
+</body>
+</html>

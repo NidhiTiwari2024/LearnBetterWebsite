@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — LearnBetter</title>
+  <meta name="description" content="Learn about our mission to make mastery accessible to everyone.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .static-page { padding-top: 96px; background: #F9FAFB; min-height: 100vh; }
+    .static-hero { padding: 80px 0 56px; background: #F9FAFB; text-align: center; border-bottom: 1px solid #E5E7EB; }
+    .static-hero h1 { font-size: clamp(32px,5vw,48px); font-weight: 800; color: #111827; margin-bottom: 14px; letter-spacing: -0.02em; }
+    .static-hero p  { font-size: 17px; color: #6B7280; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .static-body { padding: 72px 0 120px; background: #ffffff; }
+    .prose { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+    .prose h2 { font-size: 20px; font-weight: 700; color: #111827; margin: 44px 0 14px; letter-spacing: -0.01em; }
+    .prose h2:first-child { margin-top: 0; }
+    .prose p { font-size: 15px; color: #374151; line-height: 1.8; margin-bottom: 18px; }
+    .prose ul { list-style: disc; padding-left: 22px; margin-bottom: 18px; }
+    .prose ul li { font-size: 15px; color: #374151; line-height: 1.8; margin-bottom: 6px; }
+    .prose a { color: #3457A5; text-decoration: underline; }
+    .prose a:hover { color: #2a4590; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-outer">
+      <div class="nav-pill">
+        <a href="index.html" class="nav-logo-wrap">
+          <img src="https://storage.googleapis.com/learn-better-media/images/blog/Logo.jpg" alt="LearnBetter" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span class="nav-logo-text">LearnBetter</span>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-links">
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#login">Log In</a></li>
+          </ul>
+          <a href="pricing.html" class="nav-cta">
+            Get Started Free
+            <span class="nav-cta-circle">
+              <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+          <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="nav-mobile" id="navMobile">
+        <a href="pricing.html">Pricing</a>
+        <a href="blog.html">Blog</a>
+        <a href="#login">Log In</a>
+        <hr>
+        <a href="pricing.html" class="nav-cta">Get Started Free<span class="nav-cta-circle"><svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="static-page">
+    <section class="static-hero">
+      <div class="container">
+        <h1>About LearnBetter</h1>
+        <p>We believe everyone deserves to learn as effectively as the best learners in the world.</p>
+      </div>
+    </section>
+
+    <section class="static-body">
+      <div class="prose">
+
+        <h2>Our Mission</h2>
+        <p>LearnBetter exists to close the gap between consuming information and actually owning it. Most people read, watch, and listen to incredible content every day — and forget nearly all of it within a week. We think that's a solvable problem.</p>
+
+        <h2>What We Build</h2>
+        <p>We combine the science of spaced repetition, active recall, and Bloom's Taxonomy into one seamless experience. Paste in any article or video, and LearnBetter instantly generates a personalized path of 40+ questions calibrated to the thinking level you want to reach.</p>
+
+        <h2>Our Values</h2>
+        <ul>
+          <li>Science first — every feature is grounded in cognitive research</li>
+          <li>Learner agency — you set the goal, we build the path</li>
+          <li>Radical honesty — we show you exactly what you know and what you don't</li>
+          <li>Simplicity — powerful tools that feel effortless</li>
+        </ul>
+
+        <h2>Get In Touch</h2>
+        <p>Interested in partnering, investing, or just want to say hello? Reach us at <a href="mailto:hello@learnbetter.app">hello@learnbetter.app</a>.</p>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">LearnBetter</a>
+          <p>Helping people learn more effectively through science-backed methods and smart technology.</p>
+        </div>
+        <div class="footer-col"><h4>Product</h4><ul><li><a href="index.html#features">Features</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="help-center.html">Help Center</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookie-policy.html">Cookie Policy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 LearnBetter, Inc. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const h = document.getElementById('navHamburger');
+    const m = document.getElementById('navMobile');
+    if (h && m) {
+      h.addEventListener('click', () => m.classList.toggle('open'));
+      document.addEventListener('click', e => { if (!e.target.closest('.nav-outer')) m.classList.remove('open'); });
+    }
+  </script>
+
+</body>
+</html>

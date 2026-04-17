@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is LearnBetter? — LearnBetter Blog</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .article-hero {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      margin-top: 72px; /* clear nav */
+    }
+    .article-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .article-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .article-hero-title {
+      position: absolute;
+      bottom: 48px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #ffffff;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      padding: 0 28px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .article-meta {
+      max-width: 740px;
+      margin: 40px auto 0;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #6B7280;
+      font-size: 14px;
+      border-bottom: 1px solid #E5E7EB;
+      padding-bottom: 28px;
+    }
+    .article-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: #D1D5DB; flex-shrink: 0; }
+    .article-body {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 52px 28px 120px;
+    }
+    .article-body h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #111827;
+      margin: 52px 0 16px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .article-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+      margin: 32px 0 10px;
+      line-height: 1.4;
+    }
+    .article-body p {
+      font-size: 17px;
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+    .article-body strong {
+      color: #111827;
+      font-weight: 700;
+    }
+    .article-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+    .article-body ul li {
+      font-size: 17px;
+      color: #374151;
+      line-height: 1.75;
+      padding: 6px 0 6px 24px;
+      position: relative;
+    }
+    .article-body ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3457A5;
+    }
+    .article-body .intro-lead {
+      font-size: 19px;
+      color: #1F2937;
+      line-height: 1.75;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+    .article-faq {
+      margin-top: 56px;
+      border-top: 2px solid #E5E7EB;
+      padding-top: 40px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #E5E7EB;
+      padding: 22px 0;
+    }
+    .faq-q {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .faq-q svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: transform 0.25s ease;
+      color: #3457A5;
+    }
+    .faq-item.open .faq-q svg { transform: rotate(180deg); }
+    .faq-a {
+      font-size: 16px;
+      color: #4B5563;
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .article-cta {
+      margin-top: 72px;
+      background: linear-gradient(135deg, #2a4590 0%, #3457A5 50%, #4a6cbf 100%);
+      border-radius: 20px;
+      padding: 52px 40px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .article-cta h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff !important;
+      margin: 0 0 12px !important;
+      letter-spacing: -0.02em;
+    }
+    .article-cta p {
+      color: rgba(255,255,255,0.85) !important;
+      font-size: 17px !important;
+      margin-bottom: 28px !important;
+    }
+    .article-cta .ada-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      color: #3457A5;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 20px 12px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .article-cta .ada-cta-btn:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+      transform: translateY(-1px);
+    }
+    .ada-cta-circle {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: #3457A5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ada-cta-circle svg { stroke: #ffffff; }
+
+    /* Active nav link */
+    .nav-active { color: var(--accent) !important; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-outer">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-logo-wrap">
+        <img src="https://storage.googleapis.com/learn-better-media/images/blog/Logo.jpg" alt="LearnBetter" class="nav-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span class="nav-logo-text">LearnBetter</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="blog.html" class="nav-active">Blog</a></li>
+          <li><a href="#login">Log In</a></li>
+        </ul>
+        <a href="pricing.html" class="nav-cta">
+          Get Started Free
+          <span class="nav-cta-circle">
+            <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="#login">Log In</a>
+      <hr>
+      <a href="pricing.html" class="nav-cta">
+        Get Started Free
+        <span class="nav-cta-circle">
+          <svg class="nav-cta-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     ARTICLE HERO
+════════════════════════════════════════════ -->
+<div class="article-hero">
+  <img
+    src="https://storage.googleapis.com/learn-better-media/images/blog/WhatisLearnBetter.png"
+    alt="What Is LearnBetter?"
+    class="article-hero-img">
+  <div class="article-hero-overlay"></div>
+  <h1 class="article-hero-title">What Is LearnBetter?</h1>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ARTICLE META
+════════════════════════════════════════════ -->
+<div class="article-meta">
+  <span>LearnBetter Team</span>
+  <span class="article-meta-dot"></span>
+  <span>April 16, 2026</span>
+  <span class="article-meta-dot"></span>
+  <span>10 min read</span>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     ARTICLE BODY
+════════════════════════════════════════════ -->
+<article class="article-body">
+
+  <!-- Intro -->
+  <p class="intro-lead">Most people learn the hard way — reading the same page twice, forgetting what they studied, and wondering why nothing sticks. The problem isn't effort. It's method.</p>
+
+  <p>Traditional study tools are built for consumption, not retention. Highlighters, re-reading, passive note-taking — these feel productive, but decades of cognitive science research show they produce weak, short-lived memories. The gap between studying and actually knowing something is enormous, and most tools do nothing to close it.</p>
+
+  <p>Learn Better is built to solve that problem.</p>
+
+  <p>Learn Better is an AI-powered learning platform that transforms the material you need to know into a personalized, science-backed study system. It combines active recall, spaced repetition, and adaptive questioning to help you build lasting knowledge — not just short-term familiarity.</p>
+
+  <p>Whether you're preparing for a professional certification, learning a new language, studying for exams, or trying to master a complex subject on your own, Learn Better gives you the tools to learn more in less time — and actually remember what you studied.</p>
+
+  <!-- Who Learn Better Is For -->
+  <h2>Who Learn Better Is For</h2>
+
+  <p>Learn Better is designed for anyone who needs to acquire and retain knowledge efficiently. That includes:</p>
+
+  <ul>
+    <li><strong>Students</strong> preparing for exams who want to move beyond passive re-reading and into active, testable recall</li>
+    <li><strong>Professionals</strong> pursuing certifications, licenses, or continuing education who need to master dense material without wasting time</li>
+    <li><strong>Self-learners</strong> working through books, courses, or research who want a systematic way to retain what they read</li>
+    <li><strong>Language learners</strong> building vocabulary and grammar knowledge that needs to stay fresh over months or years</li>
+    <li><strong>Knowledge workers</strong> who regularly consume information and need reliable systems for actually internalizing it</li>
+  </ul>
+
+  <p>If you've ever finished a chapter and realized you couldn't summarize it ten minutes later — Learn Better is for you.</p>
+
+  <!-- What Problem Learn Better Solves -->
+  <h2>What Problem Learn Better Solves</h2>
+
+  <p>The core problem Learn Better solves is the <strong>forgetting curve</strong> — the well-documented pattern by which newly learned information rapidly fades from memory without reinforcement.</p>
+
+  <p>Research by Hermann Ebbinghaus in the 19th century, later confirmed by decades of cognitive psychology, shows that without review, people forget roughly 70% of new information within 24 hours. Within a week, that number climbs even higher.</p>
+
+  <p>Passive study methods — reading, highlighting, watching videos — don't interrupt this curve. They create an <strong>illusion of knowing</strong>: the material feels familiar in the moment, but it hasn't been encoded into long-term memory.</p>
+
+  <p>Learn Better solves this by replacing passive review with <strong>active retrieval practice</strong> — the proven technique of recalling information from memory rather than simply re-exposing yourself to it. This process, known as the testing effect or retrieval practice effect, dramatically strengthens memory traces and accelerates long-term retention.</p>
+
+  <p>On top of that, Learn Better schedules your reviews using <strong>spaced repetition</strong> — an algorithm that times review sessions to occur just before you're likely to forget, maximizing efficiency and minimizing wasted study time.</p>
+
+  <!-- How Learn Better Works -->
+  <h2>How Learn Better Works</h2>
+
+  <p>Getting started with Learn Better takes minutes. Here's how the process works:</p>
+
+  <ul>
+    <li><strong>Upload your material.</strong> Paste text, upload a PDF, drop in a URL, or connect a document. Learn Better accepts virtually any format.</li>
+    <li><strong>AI generates your study set.</strong> Learn Better's AI analyzes your content and extracts the key concepts, facts, definitions, and relationships that matter. It generates a structured set of questions and answers calibrated to the depth and complexity of your material.</li>
+    <li><strong>You study with active recall.</strong> Instead of re-reading, you're tested. You answer questions from memory, rate your confidence, and get immediate feedback.</li>
+    <li><strong>The system adapts to you.</strong> Based on your performance, Learn Better's spaced repetition algorithm schedules future reviews. Items you know well are shown less frequently. Items you struggle with come back sooner and more often.</li>
+    <li><strong>You track your progress.</strong> Learn Better shows you retention scores, mastery levels, and upcoming review sessions — giving you a clear picture of what you know and what still needs work.</li>
+  </ul>
+
+  <p>The result is a study system that's personalized, efficient, and grounded in how memory actually works.</p>
+
+  <!-- How Learn Better Is Different -->
+  <h2>How Learn Better Is Different</h2>
+
+  <p>Most study apps are built around content delivery — flashcard decks to browse, videos to watch, quizzes to click through. They put the burden of learning design on you: you have to figure out what to study, when to study it, and whether your approach is working.</p>
+
+  <p>Learn Better is different in several key ways:</p>
+
+  <ul>
+    <li><strong>You bring your own material.</strong> Learn Better isn't a content library. It works with the content you already consume — articles, YouTube videos, reports, and documents up to 5MB.</li>
+    <li><strong>AI does the heavy lifting.</strong> Creating flashcards and study questions manually is time-consuming and often poorly calibrated. Learn Better's AI generates high-quality questions automatically, saving hours of prep work.</li>
+    <li><strong>The algorithm works for you.</strong> Rather than studying on a fixed schedule or reviewing the same material regardless of whether you know it, Learn Better's adaptive system routes your time toward the content that needs it most.</li>
+    <li><strong>It's built on science.</strong> Every core feature — active recall, spaced repetition, confidence-based rating — is grounded in peer-reviewed cognitive science research. This isn't gamification for its own sake. It's a system designed to produce real retention.</li>
+  </ul>
+
+  <!-- How Learn Better Is Different from LLMs -->
+  <h2>How Learn Better Is Different from LLMs</h2>
+
+  <p>You might wonder: why not just use ChatGPT or another large language model to quiz yourself?</p>
+
+  <p>LLMs are powerful general-purpose tools, but they're not designed for systematic learning. When you ask an LLM to quiz you, there's no memory of what you've already reviewed, no tracking of what you struggled with, no algorithm scheduling your next review, and no system ensuring you're covering your material comprehensively.</p>
+
+  <p>Learn Better uses AI for what it does best — analyzing content and generating high-quality questions — while layering on the structured, research-backed architecture that turns practice into durable memory. It's not a chatbot. It's a learning system.</p>
+
+  <!-- What Learn Better Helps You Do -->
+  <h2>What Learn Better Helps You Do</h2>
+
+  <p>At its core, Learn Better helps you do three things:</p>
+
+  <ul>
+    <li><strong>Learn faster.</strong> By eliminating inefficient study methods and replacing them with high-leverage techniques, you cover the same ground in significantly less time.</li>
+    <li><strong>Remember longer.</strong> Spaced repetition ensures that what you learn stays accessible weeks, months, and years later — not just through your next exam.</li>
+    <li><strong>Know what you know.</strong> Learn Better's progress tracking removes the guesswork from studying. You can see exactly what you've mastered, what's at risk of fading, and what you haven't gotten to yet.</li>
+  </ul>
+
+  <!-- How Learn Better Measures Retention -->
+  <h2>How Learn Better Measures Retention</h2>
+
+  <p>One of Learn Better's most useful features is its <strong>retention scoring system</strong>. Rather than just tracking whether you answered a question correctly or not, Learn Better models your memory state for each item in your study set.</p>
+
+  <p>When you answer a question, you rate your confidence — from a quick, effortless recall to a slow, uncertain one. These ratings, combined with your answer history, feed into the spaced repetition algorithm to estimate how well each piece of information is consolidated in your memory.</p>
+
+  <p>Your overall retention score reflects the percentage of your material you're likely to be able to recall right now. As reviews lapse and items fade, your score reflects that — nudging you to review before knowledge slips away entirely.</p>
+
+  <p>This gives you something most study tools don't: an honest, real-time picture of what you actually know.</p>
+
+  <!-- Why Learn Better Exists -->
+  <h2>Why Learn Better Exists</h2>
+
+  <p>The gap between effort and outcome in learning is one of the most frustrating and consequential problems people face. Students spend dozens of hours studying material they'll forget before the ink dries on their exam. Professionals invest in certifications only to find the knowledge evaporates within months. Self-learners build elaborate note systems that never get reviewed.</p>
+
+  <p>The science of how to learn effectively has been well-established for decades — but it's been locked inside academic papers, inaccessible to most learners, and poorly implemented in the tools that do exist.</p>
+
+  <p>Learn Better exists to change that. To make evidence-based learning accessible, practical, and powerful for anyone who needs to know something — and keep knowing it.</p>
+
+  <!-- FAQ -->
+  <div class="article-faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        What kinds of content can I upload to Learn Better?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        Learn Better works with articles, blog posts, YouTube links, and file attachments up to 5MB. You can paste text directly, link to a web article or YouTube video, or upload a document. The AI processes your content and generates review questions regardless of the format.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Do I need to create flashcards manually?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        No. Learn Better's AI automatically generates questions and answers from your uploaded material. You don't need to spend time manually creating cards. That said, you can review, edit, or add to the generated set if you want to customize it.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        How is spaced repetition different from just reviewing material regularly?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        Regular review on a fixed schedule treats all material equally, regardless of how well you know it. Spaced repetition is adaptive: it schedules each item for review at the optimal moment — just before you're likely to forget it. This means you spend more time on difficult material and less time re-reviewing things you already know well, making your study sessions far more efficient.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Is Learn Better suitable for professional certification prep?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        Yes. Learn Better is well-suited for professional certification prep, including technical certifications, medical and legal licensing exams, language proficiency tests, and more. Because it works with your own study materials, you can tailor it precisely to the content of your specific exam.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        How long does it take to see results?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        Most users notice improved recall within the first week of consistent use. The spaced repetition algorithm becomes increasingly effective over time as it builds a model of your memory for each item. For long-term retention across a large body of material, the compounding benefits become most pronounced after several weeks of regular study sessions.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        Can I use Learn Better alongside other study methods?
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="faq-a">
+        Absolutely. Learn Better works best as a complement to your broader learning process. You might read a chapter, watch a lecture, or attend a class — and then use Learn Better to consolidate and retain what you've just learned. It's designed to fit into your existing workflow, not replace it entirely.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <h2>Start Building Lasting Knowledge</h2>
+    <p>Join thousands of learners who are studying smarter, retaining more, and actually remembering what they learn. Get started free — no credit card required.</p>
+    <a href="pricing.html" class="ada-cta-btn">
+      Start for Free →
+      <span class="ada-cta-circle">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
+  </div>
+
+</article>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">LearnBetter</a>
+        <p>Helping people learn more effectively through science-backed methods and smart technology.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="help-center.html">Help Center</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LearnBetter, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('navHamburger');
+  const navMobile = document.getElementById('navMobile');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    document.addEventListener('click', e => { if (!e.target.closest('.nav-outer')) navMobile.classList.remove('open'); });
+  }
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
