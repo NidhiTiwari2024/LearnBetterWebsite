@@ -139,7 +139,7 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px 10px 16px;
-  background: rgba(255,255,255,0.92);
+  background: #ffffff;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-radius: 9999px;
@@ -171,10 +171,13 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
 .nav-logo-text {
   font-size: 20px;
   font-weight: 700;
-  color: #111827;
+  color: var(--accent);
   letter-spacing: -.02em;
   display: block;
   margin-left: 8px;
+}
+.nav-logo-text em {
+  font-style: italic;
 }
 
 /* Right side wrapper */
@@ -668,10 +671,10 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
 /* ── Retention System ─────────────────────────── */
 .rs-section {
   background: #ffffff;
-  padding: 48px 16px 16px;
+  padding: 80px 16px 48px;
 }
 @media (min-width: 1024px) {
-  .rs-section { padding: 80px 32px; }
+  .rs-section { padding: 120px 32px 64px; }
 }
 
 .rs-inner {
@@ -926,7 +929,7 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
 
 /* ── Concept To Question ─────────────────────── */
 .ctq-section {
-  padding: 120px 0;
+  padding: 120px 0 64px;
   background: #FAFAFA;
 }
 .ctq-section .section-header {
@@ -1362,7 +1365,7 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
   font-weight: 500;
   color: #1F2937;
   line-height: 1.55;
-  margin: 0;
+  margin: 0 0 10px;
 }
 .blooms-visualizer {
   margin-top: auto;
@@ -1376,6 +1379,91 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
   justify-content: center;
   min-height: 140px;
   width: 100%;
+}
+.blooms-visualizer--categorize {
+  margin-top: 8px;
+  margin-bottom: 2px;
+  min-height: 0;
+  max-height: none;
+  align-items: stretch;
+  justify-content: flex-start;
+  overflow: visible;
+}
+.blooms-card--categorize {
+  height: auto;
+}
+.blooms-card--categorize .blooms-card-middle {
+  padding: 16px 20px 14px;
+  overflow: visible;
+}
+.blooms-card--categorize .blooms-visualizer--categorize {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+.blooms-card--categorize + .blooms-slider-wrap {
+  margin-top: 14px;
+}
+.blooms-card--simulation {
+  height: auto;
+}
+.blooms-card--simulation .blooms-card-middle {
+  padding: 14px 20px 14px;
+  overflow: visible;
+}
+.blooms-card--simulation .blooms-visualizer--simulation {
+  margin-top: 6px;
+  margin-bottom: 0;
+  min-height: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.blooms-card--simulation + .blooms-slider-wrap {
+  margin-top: 14px;
+}
+.blooms-card--venn {
+  height: auto;
+}
+.blooms-card--venn .blooms-card-middle {
+  padding: 14px 20px 18px;
+  overflow: visible;
+}
+.blooms-card--venn .blooms-visualizer--venn {
+  margin-top: 6px;
+  margin-bottom: 0;
+  min-height: 0;
+}
+.blooms-card--venn + .blooms-slider-wrap {
+  margin-top: 14px;
+}
+.blooms-card--compare-select {
+  height: auto;
+}
+.blooms-card--compare-select .blooms-card-middle {
+  padding: 14px 20px 18px;
+  overflow: visible;
+}
+.blooms-card--compare-select .blooms-visualizer--compare-select {
+  margin-top: 6px;
+  margin-bottom: 0;
+  min-height: 0;
+}
+.blooms-card--compare-select + .blooms-slider-wrap {
+  margin-top: 14px;
+}
+.blooms-card--flowchart {
+  height: auto;
+}
+.blooms-card--flowchart .blooms-card-middle {
+  padding: 14px 20px 18px;
+  overflow: visible;
+}
+.blooms-card--flowchart .blooms-visualizer--flowchart {
+  margin-top: 6px;
+  margin-bottom: 0;
+  min-height: 0;
+}
+.blooms-card--flowchart + .blooms-slider-wrap {
+  margin-top: 14px;
 }
 
 /* Slider */
@@ -1451,6 +1539,23 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
 @media (max-width: 1024px) {
   .blooms-grid { grid-template-columns: 1fr; gap: 48px; }
   .blooms-card { height: 580px; }
+  .blooms-card--categorize { height: auto; }
+  .blooms-card--simulation { height: auto; }
+  .blooms-card--venn       { height: auto; }
+
+  /* Scrollable tall cards on smaller screens */
+  .blooms-card--compare-select { height: auto; }
+  .blooms-card--compare-select .blooms-card-middle {
+    overflow-y: auto;
+    max-height: 420px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .blooms-card--flowchart { height: auto; }
+  .blooms-card--flowchart .blooms-card-middle {
+    overflow-y: auto;
+    max-height: 420px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* ── Concept Demo (legacy — keep for safety) ─── */
@@ -1834,6 +1939,18 @@ p   { font-size: 15px; color: var(--muted); line-height:1.75; }
   .testi-stack { height: 340px; }
   .testi-card  { height: 300px; padding: 22px; }
   .testi-quote { font-size: 13px; margin-top: 34px; -webkit-line-clamp: 4; }
+}
+
+/* ── Bloom's CTA strip ───────────────────────── */
+.blooms-cta-strip {
+  padding: 0 28px 80px;
+  background: #F9FAFB;
+  display: flex;
+  justify-content: center;
+}
+.blooms-cta-btn {
+  font-size: 17px;
+  padding: 16px 32px;
 }
 
 /* ── CTA Strip ────────────────────────────────── */

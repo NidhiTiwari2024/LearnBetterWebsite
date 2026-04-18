@@ -50,16 +50,16 @@ if (hamburger && mobileMenu) {
 
   const CONTENT = [
     {
-      title:    'Own What You Learn. Forever.',
-      subtitle: 'LearnBetter is the only platform that automates your learning by capturing and locking in the best ideas from everything you watch and read.'
+      title:    'You read to grow your career.',
+      subtitle: 'The ideas you consume should help you think better, decide faster, and communicate more clearly.'
     },
     {
-      title:    'Never Forget Your Best Ideas.',
-      subtitle: 'Our smart engine predicts when you\'re about to forget and triggers the perfect review to lock knowledge in for life.'
+      title:    'But most of it doesn\'t stick.',
+      subtitle: 'Research shows that without reinforcement, new learning fades much faster than most people realize.'
     },
     {
-      title:    'Build Your Library of Mastery.',
-      subtitle: 'Knowledge is your greatest asset. Turn everything you consume into permanent career capital that scales as you grow.'
+      title:    'Retain what matters with LearnBetter.',
+      subtitle: 'Using active recall and personalized review timing, LearnBetter helps valuable knowledge stick for the long term.'
     }
   ];
 
@@ -287,51 +287,84 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
   const TAXONOMY = [
     {
       level:'Remember', abbrev:'Rem',
-      context:'Laying the Foundation. Identify the fundamental facts and key terms instantly.',
-      badge:'[Primer]',
-      question:'Pick the correct definition of Product-Market Fit from the list below.',
-      type:'multiple-choice',
-      data:[{text:'When a product can be sold for profit.',correct:false},{text:'Being in a good market with a product that can satisfy that market.',correct:true},{text:'When you have over 1,000 active users.',correct:false}]
+      context:'Sort by learning impact. Separate high-effectiveness methods from low-effectiveness habits quickly.',
+      badge:'[Sorting]',
+      question:'Sort the items into the correct categories by clicking an item, then clicking a category.',
+      type:'categorize',
+      data:{
+        categories:['High-Effectiveness', 'Low-Effectiveness'],
+        items:['Active recall', 'Highlighting', 'Spaced repetition', 'Re-reading', 'Practice testing']
+      }
     },
     {
       level:'Understand', abbrev:'Und',
-      context:'Grasping the Why. Organize and group ideas to build mental clarity.',
-      badge:'Matching',
-      question:'Match these strategy outcomes to their correct definitions.',
-      type:'matching',
-      data:[{left:'Churn',right:'Customer Attrition'},{left:'LTV',right:'Lifetime Value'}]
+      context:'Explaining the Why. Interpret how memory processes relate by completing the analogy.',
+      badge:'[Analogy]',
+      question:'Complete the analogy by selecting the correct term.',
+      type:'analogy-select',
+      data:{
+        pairA:['Encoding','Storage'],
+        pairB:['Learning','?'],
+        choices:['Memory','Practice','Testing','Forgetting']
+      }
     },
     {
       level:'Apply', abbrev:'App',
       context:'Taking Action. Solve real-world scenarios by implementing your insights.',
-      badge:'[Generator]',
-      question:'Select the best framework to use for a high-priority Q3 project.',
-      type:'grid-select',
-      data:['RICE Score','Kano Model','MoSCoW Method']
+      badge:'[Simulation]',
+      question:'Simulation Exercise',
+      type:'simulation',
+      data:{
+        title:'Simulation Exercise',
+        description:"You're managing your study schedule for the week. Make decisions about how to allocate your study time effectively.",
+        note:"You'll make 3 sequential decisions. Each choice will affect the simulation outcome."
+      }
     },
     {
       level:'Analyze', abbrev:'Ana',
-      context:'Linking Strategy. Break down systems to find the connections between ideas.',
-      badge:'Sorting',
-      question:"Sort these feature requests into 'High-Value' and 'Operational Noise'.",
-      type:'kanban',
-      data:{leftCol:'Incoming',rightCols:['High Value','Noise']}
+      context:'Breaking It Down. Examine each strategy and distinguish where it actually belongs.',
+      badge:'[Sorting]',
+      question:'Classify each learning strategy based on whether it involves Active Learning, Spaced Practice, both, or neither.',
+      type:'venn',
+      data:{
+        leftLabel:'Active Learning',
+        rightLabel:'Spaced Practice',
+        items:['Practice Testing','Highlighting','Spaced Repetition','Interleaved Practice','Re-reading','Distributed Review Sessions']
+      }
     },
     {
       level:'Evaluate', abbrev:'Eva',
-      context:'Expert Judgment. Assess the value of data and make high-stakes calls.',
+      context:'Expert Judgment. Assess the evidence and defend the best choice.',
       badge:'[Calibration Lab]',
-      question:'Rank these three product bets based on their potential career ROI.',
-      type:'ranking',
-      data:['AI Integration','Mobile Refactor','Enterprise SSO']
+      question:'Which strategy best prepares for an exam?',
+      type:'compare-select',
+      data:{
+        scenario:'2 weeks to a comprehensive exam. Goal: maximize long-term retention.',
+        options:[
+          { name:'Flashcards',     attrs:[['Effectiveness','High — Active recall strengthens memory'],['Time','Moderate — Requires card creation'],['Retention','High — Spaced repetition compatible']] },
+          { name:'Practice Tests', correct:true, attrs:[['Effectiveness','Very High — Testing effect maximizes retention'],['Time','High — Finding tests takes effort'],['Retention','Very High — Retrieval practice builds strong memories']] },
+          { name:'Summary Notes',  attrs:[['Effectiveness','Low — Passive, illusion of learning'],['Time','Low — Quick to create'],['Retention','Low — Minimal retrieval practice']] }
+        ]
+      }
     },
     {
       level:'Create', abbrev:'Cre',
-      context:'System Innovation. Synthesize your knowledge to identify new solutions.',
+      context:'System Innovation. Synthesize your knowledge to build a complete process.',
       badge:'[Builder]',
-      question:'Select the three core pillars required for a new growth experiment.',
-      type:'pill-select',
-      data:['Viral Loop','Paid Acquisition','Content SEO','Referral','Sales','Community']
+      question:'Build the optimal learning flowchart.',
+      type:'flowchart',
+      data:{
+        steps:[
+          { type:'start',    label:'Start Learning Session' },
+          { type:'process',  label:'Encode new information (read, watch, listen)' },
+          { type:'process',  label:'Practice active recall (test yourself)' },
+          { type:'decision', label:'Did you recall correctly?' },
+          { type:'process',  label:'Review mistakes and gaps' },
+          { type:'process',  label:'Schedule spaced review' },
+          { type:'decision', label:'Achieved mastery (3+ successful recalls)?' },
+          { type:'end',      label:'Mark topic as mastered' }
+        ]
+      }
     }
   ];
 
@@ -342,6 +375,7 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
   const fill        = document.getElementById('bloomsTrackFill');
   const thumb       = document.getElementById('bloomsThumb');
   const labelsWrap  = document.getElementById('bloomsLabels');
+  const cardEl      = document.getElementById('bloomsCard');
   const levelNameEl = document.getElementById('bloomsLevelName');
   const badgeEl     = document.getElementById('bloomsLevelBadge');
   const ctxWrap     = document.getElementById('bloomsContextWrap');
@@ -388,6 +422,112 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
             <span style="font-size:13px;font-weight:500;color:${o.correct?'#111827':'#4b5563'}">${o.text}</span>
           </div>`).join('')}
         </div>`;
+
+      case 'categorize': {
+        const categories = data?.categories || [];
+        const items = data?.items || [];
+        const teal = '#0F766E';
+        return `<div style="display:flex;flex-direction:column;gap:10px;width:100%">
+          ${categories.map((category, i) => {
+            const color = i === 0 ? P : teal;
+            const bg = i === 0 ? tint(.08) : 'rgba(15,118,110,.08)';
+            const border = i === 0 ? tint(.75) : 'rgba(15,118,110,.7)';
+            return `<div style="border:2px solid ${border};background:${bg};border-radius:12px;padding:10px">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                <div style="width:26px;height:26px;border-radius:8px;background:${color};color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">${i + 1}</div>
+                <div style="font-size:13px;font-weight:700;color:${color}">${category}</div>
+              </div>
+              <div style="font-size:12px;color:#94a3b8;background:rgba(255,255,255,.75);border:1px solid rgba(203,213,225,.55);border-radius:8px;padding:8px 10px;font-style:italic">
+                No items yet
+              </div>
+            </div>`;
+          }).join('')}
+
+          <div style="border:1.5px dashed ${tint(.35)};border-radius:12px;padding:10px;background:#f8fafc">
+            <div style="font-size:12px;font-weight:700;color:#334155;margin-bottom:8px">
+              Items to Categorize (${items.length})
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+              ${items.map(item => `
+              <div style="padding:8px 10px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;font-size:12px;font-weight:500;color:#334155">
+                ${item}
+              </div>`).join('')}
+            </div>
+          </div>
+        </div>`;
+      }
+
+      case 'analogy-select': {
+        const pairA = data?.pairA || ['Encoding', 'Storage'];
+        const pairB = data?.pairB || ['Learning', '?'];
+        const choices = data?.choices || [];
+        return `<div style="display:flex;flex-direction:column;gap:10px;width:100%">
+          <div style="padding:10px 12px;background:${tint(.08)};border:1px solid ${tint(.25)};border-radius:10px">
+            <div style="font-size:12px;font-weight:700;color:#1f2937;margin-bottom:4px">Instructions:</div>
+            <div style="font-size:12px;color:#64748b;line-height:1.45">
+              Select the term that best completes the analogy relationship.
+            </div>
+          </div>
+
+          <div style="padding:12px;border:1px solid ${tint(.32)};background:${tint(.07)};border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+            <span style="padding:7px 12px;border:2px solid ${P};border-radius:10px;font-size:12px;font-weight:700;color:#1f2937;background:#fff">${pairA[0]}</span>
+            <span style="font-size:18px;font-weight:700;color:${P}">:</span>
+            <span style="padding:7px 12px;border:2px solid ${P};border-radius:10px;font-size:12px;font-weight:700;color:#1f2937;background:#fff">${pairA[1]}</span>
+            <span style="font-size:18px;font-weight:700;color:#64748b">::</span>
+            <span style="padding:7px 12px;border:2px solid ${P};border-radius:10px;font-size:12px;font-weight:700;color:#1f2937;background:#fff">${pairB[0]}</span>
+            <span style="font-size:18px;font-weight:700;color:${P}">:</span>
+            <span style="padding:7px 12px;border:2px dashed #94a3b8;border-radius:10px;font-size:12px;font-weight:700;color:#1f2937;background:#fff">${pairB[1]}</span>
+          </div>
+
+          <div style="font-size:11px;font-weight:600;color:#334155;margin-top:2px">
+            Select the term that completes the analogy:
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            ${choices.map((choice, i) => `
+            <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;border:1.5px solid #c7d2fe;background:#fff">
+              <span style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#f3f4f6;color:#6b7280;font-size:12px;font-weight:700;flex-shrink:0">
+                ${String.fromCharCode(65 + i)}
+              </span>
+              <span style="font-size:12px;font-weight:600;color:#334155">${choice}</span>
+            </div>`).join('')}
+          </div>
+        </div>`;
+      }
+
+      case 'simulation': {
+        const title = data?.title || 'Simulation Exercise';
+        const description = data?.description || "You're managing your study schedule for the week.";
+        const note = data?.note || "You'll make 3 sequential decisions. Each choice will affect the simulation outcome.";
+        return `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;width:100%;gap:16px;padding:2px 2px 0">
+          <div style="width:64px;height:64px;border-radius:50%;background:${tint(.2)};display:flex;align-items:center;justify-content:center">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="${P}" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <polygon points="10,8 17,12 10,16"></polygon>
+            </svg>
+          </div>
+
+          <h4 style="font-size:18px;line-height:1.2;font-weight:700;color:#111827;margin:0;letter-spacing:-0.01em">${title}</h4>
+
+          <p style="font-size:13px;line-height:1.55;font-weight:500;color:#475569;max-width:540px;margin:0">
+            ${description}
+          </p>
+
+          <div style="background:${tint(.08)};border:1px solid ${tint(.24)};border-radius:14px;padding:14px 18px;max-width:520px;width:100%;margin-top:8px">
+            <p style="margin:0;font-size:12px;line-height:1.45;font-weight:600;color:${P}">
+              ${note}
+            </p>
+          </div>
+
+          <button type="button" style="height:40px;padding:0 18px;border-radius:10px;border:1px solid ${P};background:${P};color:#fff;font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:8px;cursor:default;box-shadow:0 4px 14px rgba(52,87,165,.2);margin-top:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <polygon points="10,8 17,12 10,16"></polygon>
+            </svg>
+            Start Simulation
+          </button>
+        </div>`;
+      }
 
       case 'matching':
         return `<div style="display:flex;gap:14px;width:100%;align-items:center">
@@ -439,6 +579,87 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
           </div>`).join('')}
         </div>`;
       }
+      case 'venn': {
+        const leftLabel  = data?.leftLabel  || 'A';
+        const rightLabel = data?.rightLabel || 'B';
+        const items      = data?.items || [];
+        const teal = '#3d9970';
+        return `<div style="display:flex;flex-direction:column;gap:12px;width:100%">
+
+          <!-- Item grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            ${items.map(item => `
+            <div style="padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0;background:#fff;font-size:12px;font-weight:500;color:#374151">
+              ${item}
+            </div>`).join('')}
+          </div>
+
+          <!-- Venn diagram -->
+          <div style="position:relative;width:100%;height:180px;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;overflow:hidden;margin-top:4px">
+            <svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+              <circle cx="135" cy="100" r="72" fill="rgba(52,87,165,0.12)" stroke="${P}" stroke-width="1.5"/>
+              <circle cx="205" cy="100" r="72" fill="rgba(61,153,112,0.12)" stroke="${teal}" stroke-width="1.5"/>
+              <text x="90"  y="103" text-anchor="middle" font-size="10" font-weight="700" fill="${P}" opacity="0.75">Only Active</text>
+              <text x="170" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">Both</text>
+              <text x="250" y="103" text-anchor="middle" font-size="10" font-weight="700" fill="${teal}" opacity="0.75">Only Spaced</text>
+            </svg>
+            <!-- Label badges — anchored over each circle -->
+            <div style="position:absolute;top:12px;left:18%;background:${P};color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap">${leftLabel}</div>
+            <div style="position:absolute;top:12px;right:18%;background:${teal};color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap">${rightLabel}</div>
+          </div>
+        </div>`;
+      }
+
+      case 'compare-select': {
+        const scenario = data?.scenario || '';
+        const options  = data?.options  || [];
+        return `<div style="display:flex;flex-direction:column;gap:8px;width:100%">
+          ${scenario ? `
+          <div style="background:rgba(52,87,165,0.07);border:1px solid rgba(52,87,165,0.2);border-radius:10px;padding:9px 12px;margin-bottom:2px">
+            <div style="font-size:10px;font-weight:700;color:${P};text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Scenario</div>
+            <div style="font-size:12px;color:#374151;line-height:1.45">${scenario}</div>
+          </div>` : ''}
+          ${options.map(opt => `
+          <div style="border:1.5px solid ${opt.correct ? P : '#e5e7eb'};border-radius:10px;padding:10px 12px;background:${opt.correct ? tint(.05) : '#fff'}">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+              <div style="width:15px;height:15px;border-radius:50%;border:2px solid ${opt.correct ? P : '#d1d5db'};background:${opt.correct ? P : 'transparent'};flex-shrink:0"></div>
+              <span style="font-size:13px;font-weight:700;color:#111827">${opt.name}</span>
+            </div>
+            ${opt.attrs.map(([label, value]) => `
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding:4px 0;border-top:1px solid #f3f4f6">
+              <span style="font-size:11px;color:#9ca3af;white-space:nowrap">${label}</span>
+              <span style="font-size:11px;font-weight:600;color:${opt.correct ? '#1f2937' : '#6b7280'};text-align:right">${value}</span>
+            </div>`).join('')}
+          </div>`).join('')}
+        </div>`;
+      }
+
+      case 'flowchart': {
+        const steps = data?.steps || [];
+        const icons = {
+          start:    '<circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="7" cy="7" r="2" fill="currentColor"/>',
+          process:  '<rect x="1" y="3" width="12" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+          decision: '<polygon points="7,1 13,7 7,13 1,7" stroke="currentColor" stroke-width="1.8" fill="none"/>',
+          end:      '<ellipse cx="7" cy="7" rx="6" ry="4" stroke="currentColor" stroke-width="1.8" fill="none"/>'
+        };
+        const typeColor = { start:'#e53e3e', process: P, decision:'#7c3aed', end:'#059669' };
+        return `<div style="display:flex;flex-direction:column;gap:6px;width:100%">
+          <div style="font-size:11px;font-weight:700;color:#334155;margin-bottom:2px">Available Steps</div>
+          ${steps.map(s => `
+          <div style="display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid #e5e7eb;border-radius:8px;background:#fff">
+            <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:5px;background:${typeColor[s.type]};color:#fff;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0">${icons[s.type]}</svg>
+              ${s.type}
+            </span>
+            <span style="font-size:12px;font-weight:500;color:#374151">${s.label}</span>
+          </div>`).join('')}
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(52,87,165,0.07);border:1px solid rgba(52,87,165,0.2);border-radius:8px;margin-top:2px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${P}" stroke-width="2" stroke-linecap="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span style="font-size:11px;font-weight:600;color:${P}">Start building your flowchart by selecting steps from the available options above.</span>
+          </div>
+        </div>`;
+      }
+
       default: return '<span style="color:#9ca3af;font-size:13px">—</span>';
     }
   }
@@ -458,6 +679,14 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
         ctxD.textContent        = parts.slice(1).join('.').trim();
         typeEl.textContent      = d.badge;
         questionEl.textContent  = d.question;
+        if (cardEl) {
+          cardEl.classList.toggle('blooms-card--categorize',     d.type === 'categorize');
+          cardEl.classList.toggle('blooms-card--simulation',     d.type === 'simulation');
+          cardEl.classList.toggle('blooms-card--venn',           d.type === 'venn');
+          cardEl.classList.toggle('blooms-card--compare-select', d.type === 'compare-select');
+          cardEl.classList.toggle('blooms-card--flowchart',      d.type === 'flowchart');
+        }
+        vizEl.className         = `blooms-visualizer blooms-visualizer--${d.type}`;
         vizEl.innerHTML         = renderViz(d.type, d.data);
 
         ctxWrap.style.opacity = '1';
@@ -471,6 +700,11 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
       ctxD.textContent        = parts.slice(1).join('.').trim();
       typeEl.textContent      = d.badge;
       questionEl.textContent  = d.question;
+      if (cardEl) {
+        cardEl.classList.toggle('blooms-card--categorize', d.type === 'categorize');
+        cardEl.classList.toggle('blooms-card--simulation', d.type === 'simulation');
+      }
+      vizEl.className         = `blooms-visualizer blooms-visualizer--${d.type}`;
       vizEl.innerHTML         = renderViz(d.type, d.data);
       challenge.classList.add('active');
     }
@@ -510,31 +744,57 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
   const container = document.getElementById('ctqContainer');
   if (!container) return;
 
-  // ── Data (matches React component defaults) ──
-  const TEXT1 = "To scale your impact, you must identify specific AI PM Archetypes to align your team's strengths with market needs. A generic Job Description won't get you there.";
-  const TEXT2 = "Don't get bogged down by every individual Bug Report. You should implement AI Workflow Evals to build a systemic way of measuring and improving your product's intelligence over time.";
-  const CANDIDATES = ["AI PM Archetypes","AI Workflow Evals","Job Description","Bug Report"];
-  const ACCEPTED   = ["ai pm archetypes","ai workflow evals"];
+  // ── Data ──
+  const TEXT1 = "Strong product teams start with a clear user problem. They validate demand before investing heavily in a solution. This reduces the risk of building features nobody wants.";
+  const TEXT2 = "In fast-moving markets, these decisions matter even more. Teams that skip validation often waste time and engineering effort.";
+  const CANDIDATES = [
+    {
+      term: 'Start with a clear user problem',
+      match: 'start with a clear user problem',
+      isAccepted: true
+    },
+    {
+      term: 'Validate demand before building',
+      match: 'validate demand before investing heavily in a solution',
+      isAccepted: true
+    },
+    {
+      term: 'Skipping validation leads to wasted effort',
+      match: 'teams that skip validation often waste time and engineering effort',
+      isAccepted: true
+    },
+    {
+      term: 'This reduces risk',
+      match: 'this reduces the risk of building features nobody wants',
+      isAccepted: false
+    },
+    {
+      term: 'In fast-moving markets, these decisions matter even more',
+      match: 'in fast-moving markets, these decisions matter even more',
+      isAccepted: false
+    }
+  ];
   const LOOP_COUNT  = 2;
 
   const delay = ms => new Promise(r => setTimeout(r, ms));
 
-  // ── Parse text → [{term, index, isAccepted}] ─
-  function parseConcepts(text, candidates, accepted) {
+  // ── Parse text → [{term, match, index, isAccepted}] ─
+  function parseConcepts(text, candidates) {
     const lower = text.toLowerCase();
     return candidates
-      .map(term => {
-        const idx = lower.indexOf(term.toLowerCase());
+      .map(candidate => {
+        const idx = lower.indexOf(candidate.match.toLowerCase());
         if (idx === -1) return null;
-        return { term, index: idx, isAccepted: accepted.includes(term.toLowerCase()) };
+        return { ...candidate, index: idx };
       })
       .filter(Boolean)
       .sort((a, b) => a.index - b.index);
   }
 
-  const c1 = parseConcepts(TEXT1, CANDIDATES, ACCEPTED);
-  const c2 = parseConcepts(TEXT2, CANDIDATES, ACCEPTED);
+  const c1 = parseConcepts(TEXT1, CANDIDATES);
+  const c2 = parseConcepts(TEXT2, CANDIDATES);
   const allConcepts = [...c1, ...c2];
+  const conceptAcceptedByTerm = new Map(allConcepts.map(c => [c.term, c.isAccepted]));
 
   const acceptedItems = allConcepts.filter(c => c.isAccepted);
   const rejectedItems = allConcepts
@@ -550,13 +810,13 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
     for (const item of concepts) {
       if (item.index < last) continue;
       if (item.index > last) html += esc(text.slice(last, item.index));
-      const word = text.slice(item.index, item.index + item.term.length);
+      const word = text.slice(item.index, item.index + item.match.length);
       const t    = item.isAccepted ? 'accept' : 'reject';
       const tip  = item.isAccepted ? '✓ Key Concept' : '✕ Distractor';
       html += `<span class="ctq-concept ctq-concept--${t}" data-term="${esc(item.term)}">` +
               `<span class="ctq-concept-tip ctq-concept-tip--${t}">${tip}</span>` +
               `${esc(word)}</span>`;
-      last = item.index + item.term.length;
+      last = item.index + item.match.length;
     }
     if (last < text.length) html += esc(text.slice(last));
     return `<p class="ctq-para">${html}</p>`;
@@ -571,7 +831,7 @@ document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
       el.className = 'ctq-concept' + (state ? ` ctq-concept--${state}` : '');
       // re-inject tooltip (class wipe destroys it)
       if (!el.querySelector('.ctq-concept-tip')) {
-        const t    = ACCEPTED.includes(term.toLowerCase()) ? 'accept' : 'reject';
+        const t    = conceptAcceptedByTerm.get(term) ? 'accept' : 'reject';
         const tip  = t === 'accept' ? '✓ Key Concept' : '✕ Distractor';
         const span = document.createElement('span');
         span.className = `ctq-concept-tip ctq-concept-tip--${t}`;
